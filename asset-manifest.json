@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dsamanager/static/css/main.f855e6bc.css",
+    "main.js": "/dsamanager/static/js/main.a99766dd.js",
+    "static/js/453.ff374063.chunk.js": "/dsamanager/static/js/453.ff374063.chunk.js",
+    "index.html": "/dsamanager/index.html",
+    "main.f855e6bc.css.map": "/dsamanager/static/css/main.f855e6bc.css.map",
+    "main.a99766dd.js.map": "/dsamanager/static/js/main.a99766dd.js.map",
+    "453.ff374063.chunk.js.map": "/dsamanager/static/js/453.ff374063.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.a99766dd.js"
+  ]
+}
