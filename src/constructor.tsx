@@ -16,94 +16,98 @@ const Constructor = () =>
     return (
         <GlobalStateProvider>
             <Box sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                flexDirection: 'column',
-                height: '100vh'
+                backgroundColor: '#2d302e'
             }}>
                 <Box sx={{
                     display: 'flex',
-                    flexDirection: 'row',
                     justifyContent: 'space-between',
-                    height: '100%'
+                    flexDirection: 'column',
+                    height: '100vh'
                 }}>
                     <Box sx={{
-                        border: 'solid 2px black',
-                        flexGrow: 1.5
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        height: '100%'
                     }}>
-                        <DiceTray />
+                        <Box sx={{
+                            border: 'solid 2px black',
+                            flexGrow: 1.5
+                        }}>
+                            <DiceTray />
+                        </Box>
+
+                        <Box sx={{
+                            display: 'flex',
+                            border: 'solid 2px black',
+                            flexDirection: 'column',
+                            flexGrow: 0.2
+                        }}>
+                            <Box sx={{
+                                border: 'solid 2px black',
+                                flexGrow: 1
+                            }}>
+                                <Modifiers />
+                            </Box>
+
+                            <Box sx={{
+                                border: 'solid 2px black',
+                                flexGrow: 1
+                            }}>
+                                <CharacterIMG />
+                            </Box>
+                        </Box>
+
+                        <Box sx={{
+                            border: 'solid 2px black',
+                            flexGrow: 1,
+                            width: '10%'
+                        }}>
+                            <Stats />
+                        </Box>
                     </Box>
+
 
                     <Box sx={{
                         display: 'flex',
-                        border: 'solid 2px black',
-                        flexDirection: 'column',
-                        flexGrow: 0.2
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        height: '100%'
                     }}>
                         <Box sx={{
                             border: 'solid 2px black',
-                            flexGrow: 1
+                            flexGrow: 1.5
                         }}>
-                            <Modifiers />
+                            <Notes />
+                        </Box>
+
+                        <Box sx={{
+                            display: 'flex',
+                            border: 'solid 2px black',
+                            flexDirection: 'column',
+                            flexGrow: 0.5
+                        }}>
+                            <Box sx={{
+                                border: 'solid 2px black',
+                                flexGrow: 1
+                            }}>
+                                <BattleOrder />
+                            </Box>
+
+                            <Box sx={{
+                                border: 'solid 2px black',
+                                flexGrow: 1
+                            }}>
+                                <Wallet/>
+                            </Box>
                         </Box>
 
                         <Box sx={{
                             border: 'solid 2px black',
                             flexGrow: 1
                         }}>
-                            <CharacterIMG />
+                            <StatusEffects />
                         </Box>
-                    </Box>
-
-                    <Box sx={{
-                        border: 'solid 2px black',
-                        flexGrow: 1,
-                        width: '10%'
-                    }}>
-                        <Stats />
-                    </Box>
-                </Box>
-
-
-                <Box sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    height: '100%'
-                }}>
-                    <Box sx={{
-                        border: 'solid 2px black',
-                        flexGrow: 1.5
-                    }}>
-                        <Notes />
-                    </Box>
-
-                    <Box sx={{
-                        display: 'flex',
-                        border: 'solid 2px black',
-                        flexDirection: 'column',
-                        flexGrow: 0.5
-                    }}>
-                        <Box sx={{
-                            border: 'solid 2px black',
-                            flexGrow: 1
-                        }}>
-                            <BattleOrder />
-                        </Box>
-
-                        <Box sx={{
-                            border: 'solid 2px black',
-                            flexGrow: 1
-                        }}>
-                            <Wallet/>
-                        </Box>
-                    </Box>
-
-                    <Box sx={{
-                        border: 'solid 2px black',
-                        flexGrow: 1
-                    }}>
-                        <StatusEffects />
                     </Box>
                 </Box>
             </Box>
