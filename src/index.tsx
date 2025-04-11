@@ -9,13 +9,10 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 const theme = createTheme({
-    components: {
-        MuiTypography: {
-            styleOverrides: {
-                root: {
-                    color: 'white',
-                },
-            },
+    palette: {
+        text: {
+            primary: 'white',  // Default text color
+            secondary: 'lightgray', // Optional for secondary text
         },
     },
 });
