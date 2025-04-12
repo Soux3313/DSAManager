@@ -1,7 +1,7 @@
 import {
     Box, Checkbox,
     Grid,
-    Paper,
+    Paper, Slider,
     Table,
     TableBody,
     TableCell,
@@ -10,61 +10,69 @@ import {
     TableRow,
     Typography
 } from "@mui/material";
-import React from "react";
+import React, {useState} from "react";
+import {useGlobalState} from "./global-state";
 
 const StatusEffects = () => {
-    enum Stage {
-        none,
-        one,
-        two,
-        three,
-        four,
-    }
+    const {
+        effects, setEffects
+    } = useGlobalState();
 
-    type Effect = {
-        id: number;
-        name: string;
-        stage: Stage;
+    const stage = [
+        {
+            value: 0,
+            label: "O"
+        },
+        {
+            value: 1,
+            label: "I"
+        },
+        {
+            value: 2,
+            label: "II"
+        },
+        {
+            value: 3,
+            label: "III"
+        },
+        {
+            value: 4,
+            label: "IV"
+        },
+    ]
 
+    const handleSliderChange = (id:number) => (event: Event, newValue: number) => {
+        setEffects((prev) =>
+            prev.map((e) =>
+                e.id === id ? { ...e, stage: newValue } : e
+            )
+        );
     };
 
-    const effects: Effect[] = [
-        {id: 0, name: 'Animosität', stage: Stage.none},
-        {id: 1, name: 'Begehren', stage: Stage.none},
-        {id: 2, name: 'Belastung', stage: Stage.none},
-        {id: 3, name: 'Berauscht', stage: Stage.none},
-        {id: 4, name: 'Betäubung', stage: Stage.none},
-        {id: 5, name: 'Entrückung', stage: Stage.none},
-        {id: 6, name: 'Furcht', stage: Stage.none},
-        {id: 7, name: 'Paralyse', stage: Stage.none},
-        {id: 8, name: 'Schmerz', stage: Stage.none},
-        {id: 9, name: 'Trance', stage: Stage.none},
-        {id: 10, name: 'Überanstrengung', stage: Stage.none},
-        {id: 11, name: 'Verwirrung', stage: Stage.none},
-    ];
-
     return (
-        <TableContainer sx={{ width: '100%', margin:0, padding:0,  maxWidth: '700px', overflowX: 'auto', overflowY: 'auto',  maxHeight: 'calc(100vh - 300px)' }}>
+        <TableContainer sx={{ width: 450, overflowX: 'hidden',  overflowY: 'auto',  maxHeight: 'calc(100vh - 300px)'}}>
 
-            <Table size="small" sx={{width: '100%', tableLayout: 'auto'}}>
+            <Table size="small" sx={{width: 'fit-content', maxWidth: 500}}>
 
                 <TableHead >
 
                     <TableRow>
 
-                        <TableCell align="right" sx={{padding:1}}>
+                        <TableCell align="center" sx={{width: '1%', borderRight: '1px solid white'}}>
                             <Typography variant="h6">
                                 Zustände
                             </Typography>
                         </TableCell>{/* Leere Spalte für Bild */}
 
-                        <TableCell align="center" sx={{width: '5%'}}>I</TableCell>
+                        <TableCell align="center" sx={{paddingLeft: 10, width: '99%',}}>
+                            <Typography variant="h6">
+                                Stufe
+                            </Typography>
+                        </TableCell>
 
-                        <TableCell align="center" sx={{width: '5%'}}>II</TableCell>
+                        <TableCell>
 
-                        <TableCell align="center" sx={{width: '5%'}}>III</TableCell>
-
-                        <TableCell align="center" sx={{width: '5%'}}>IV</TableCell>
+                        </TableCell>
 
 
                     </TableRow>
@@ -73,39 +81,39 @@ const StatusEffects = () => {
 
                 <TableBody>
 
-                    {effects.map((effect) =>{
+                    {effects.map((effect) => {
+                        const IconComponent = effect.icon;
 
                         return (
-
-
-                            <TableRow key={effect.id}
-                                      sx={{ '&:last-child td, &:last-child th': { border: 0 }}}>
+                            <TableRow key={effect.id}>
 
                                 {/* Name */}
-                                <TableCell align="right" sx={{padding:0.5}}>
+                                <TableCell align="center" sx={{borderRight: '1px solid white'}}>
                                     <Typography variant="body2">
                                         {effect.name}
                                     </Typography>
                                 </TableCell>
 
-                                {/* I */}
-                                <TableCell align="center" sx={{padding:0.5}}>
-                                    <Checkbox/>
+                                {/* Stage */}
+                                <TableCell align="center" sx={{paddingRight:0}}>
+                                    <Slider
+                                        size="small"
+                                        defaultValue={0}
+                                        value={effect.stage}
+                                        marks={stage}
+                                        max={4}
+                                        step={null}
+                                        onChange={handleSliderChange(effect.id)}
+                                        sx={{
+                                            minWidth: 0,        // key: avoid forcing cell width
+                                            width: '60%',
+                                            marginLeft: '5%'
+                                        }}
+                                    />
                                 </TableCell>
 
-                                {/* II */}
-                                <TableCell align="center" sx={{padding:0.5}}>
-                                    <Checkbox/>
-                                </TableCell>
-
-                                {/* III */}
-                                <TableCell align="center" sx={{padding:0.5}}>
-                                    <Checkbox/>
-                                </TableCell>
-
-                                {/* IV */}
-                                <TableCell align="center" sx={{padding:0.5}}>
-                                    <Checkbox/>
+                                <TableCell>
+                                    {IconComponent && <IconComponent />}
                                 </TableCell>
 
                             </TableRow>
