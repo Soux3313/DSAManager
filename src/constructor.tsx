@@ -104,7 +104,10 @@ const Constructor = () =>
 
                         <Box sx={{
                             border: 'solid 2px black',
-                            flexGrow: 1
+                            flexGrow: 1,
+                            maxWidth: 'fit-content',
+                            margin: '0 auto',
+                            height: '100%'
                         }}>
                             <StatusEffects />
                         </Box>

@@ -48,6 +48,9 @@ interface GlobalState {
 
     copper: number;
     setCopper: (value: number) => void;
+    pain: number;
+    addPain: () => void;
+    removePain: () => void;
 }
 
 
@@ -76,6 +79,10 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     const [heller, setHeller] = useState(getStoredValue('heller', 0));
     const [copper, setCopper] = useState(getStoredValue('copper', 0));
 
+    const [pain, setPain] = useState(getStoredValue('pain', 0));
+
+    const [globalMod, setGlobalMod] = useState(getStoredValue('globalmod', 0));
+
     // Helper function to save values in localStorage and update state
     const saveToLocalStorage = (key: string, value: number) => {
         localStorage.setItem(key, JSON.stringify(value));
@@ -103,6 +110,26 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     const setSilverVal = setValue('silver', setSilver);
     const setHellerVal = setValue('heller', setHeller);
     const setCopperVal = setValue('copper', setCopper);
+    const setPainVal = setValue('pain', setPain);
+    const addPain =()  =>
+    {
+        setPainVal(pain+1);
+    }
+    const removePain = () =>
+    {
+        setPainVal(pain-1)
+    }
+
+    const setGlobalModVal = setValue('globalmod', setGlobalMod);
+
+    const addMod =()  =>
+    {
+        setGlobalModVal(globalMod+1);
+    }
+    const removeMod = () =>
+    {
+        setGlobalModVal(globalMod-1)
+    }
 
 
     return (
@@ -122,7 +149,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
             dukaten, setDukaten: setDukatenVal,
             silver, setSilver: setSilverVal,
             heller, setHeller: setHellerVal,
-            copper, setCopper: setCopperVal
+            copper, setCopper: setCopperVal,
+            pain, addPain, removePain
         }}>
             {children}
         </GlobalStateContext.Provider>
