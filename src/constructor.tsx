@@ -77,7 +77,8 @@ const Constructor = () =>
                     }}>
                         <Box sx={{
                             border: 'solid 2px black',
-                            flexGrow: 1.5
+                            flexGrow: 1.5,
+                            overflow: 'hidden',
                         }}>
                             <Notes />
                         </Box>

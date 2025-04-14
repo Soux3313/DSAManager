@@ -87,7 +87,7 @@ const Modifiers = () => {
 
     return (
         <Box sx={{
-            marginTop: 'auto',
+            marginTop: '20%',
             display: 'flex',
             flexDirection: 'column',
 
@@ -128,13 +128,44 @@ const Modifiers = () => {
 
                     <Box sx={{justifySelf: 'space-between', marginTop: '30%'}}>
                         <IconButton onClick={remModMod}>
-                            <RemoveIcon/>
+                            <RemoveIcon sx={{
+                                color:'gray',
+                                stroke: 'black',
+                                strokeWidth: '0.8px',
+
+                                '&:hover': {
+                                    backgroundColor: 'transparent',
+                                    transform: 'scale(1.2)',
+                                },
+
+                                transition: 'transform 0.1s',
+                                '&:active': {
+                                    transform: 'scale(1.1)',
+                                },
+
+                            }}/>
                         </IconButton>
                         <IconButton onClick={addModMod}>
-                            <AddIcon/>
+                            <AddIcon sx={{
+                                color:'gray',
+                                stroke: 'black',
+                                strokeWidth: '0.8px',
+
+                                '&:hover': {
+                                    backgroundColor: 'transparent',
+                                    transform: 'scale(1.2)',
+                                },
+
+                                transition: 'transform 0.1s',
+                                '&:active': {
+                                    transform: 'scale(1.1)',
+                                },
+                                }}/>
                         </IconButton>
                     </Box>
-
+                    <Typography sx={{fontStyle: 'italic', color: '#626883'}}>
+                        {modMod}
+                    </Typography>
                 </Box>
             )}
 
