@@ -44,7 +44,7 @@ const Constructor = () =>
                             flexGrow: 0.2
                         }}>
                             <Box sx={{
-                                flexGrow: 1,
+                                flexGrow: 0.3,
                                 margin: 'auto',
                                 alignContent: 'center',
                             }}>

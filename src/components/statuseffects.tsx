@@ -15,7 +15,7 @@ import {useGlobalState} from "./global-state";
 
 const StatusEffects = () => {
     const {
-        effects, setEffects
+        effects, setEffects, painMod
     } = useGlobalState();
 
     // Calculate minimum required stage for effect 4 based on effects 3 and 10
@@ -69,6 +69,11 @@ const StatusEffects = () => {
             if (newValue < minRequiredStage) {
                 newValue = minRequiredStage;
             }
+        }
+
+        // For the pain effect (id 8), ensure stage cannot be set below the current painMod value.
+        if (id === 8 && newValue < painMod) {
+            newValue = painMod;
         }
 
         setEffects((prev) =>

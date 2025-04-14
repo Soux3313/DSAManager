@@ -65,12 +65,18 @@ const Stats = () =>
 
 
     const handleSliderChangeHP = (event: Event, newValue: number) => {
-        if(newValue <= pain[0].value) setPainMod(1);
-        else if(newValue <= pain[1].value) setPainMod(2);
-        else if(newValue <= pain[2].value) setPainMod(3);
-        else if(newValue <= pain[3].value) setPainMod(4);
-        else setPainMod(0);
-        setHP(newValue)
+        if (newValue <= pain[3].value) {
+            setPainMod(4);
+        } else if (newValue <= pain[2].value) {
+            setPainMod(3);
+        } else if (newValue <= pain[1].value) {
+            setPainMod(2);
+        } else if (newValue <= pain[0].value) {
+            setPainMod(1);
+        } else {
+            setPainMod(0);
+        }
+        setHP(newValue);
     };
 
     const handleInputChangeHP = (event: React.ChangeEvent<HTMLInputElement>) => {
