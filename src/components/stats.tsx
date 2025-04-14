@@ -1,5 +1,5 @@
 import {Box, Grid, Input, InputLabel, Slider, TextField} from "@mui/material";
-import React from "react";
+import React, {useState} from "react";
 import {styled} from "@mui/material";
 import {useGlobalState} from "./global-state";
 import HealthIcon from '@mui/icons-material/FavoriteBorder';
@@ -16,7 +16,8 @@ const Stats = () =>
         GE, setGE,
         KO, setKO,
         KK, setKK,
-        HP, setHP, maxHP, setMaxHP, AK, setAK, maxAK, setMaxAK
+        HP, setHP, maxHP, setMaxHP, AK, setAK, maxAK, setMaxAK,
+        painMod, setPainMod
     } = useGlobalState();
 
     const StatBox = styled(Box)({
@@ -42,7 +43,33 @@ const Stats = () =>
         );
     };
 
+
+    const pain =[
+        {
+            value: maxHP * 0.75,
+            label: '+1 SM'
+        },
+        {
+            value: maxHP * 0.5,
+            label: '+1 SM'
+        },
+        {
+            value: maxHP * 0.25,
+            label: '+1 SM'
+        },
+        {
+            value: 5,
+            label: '+1 SM'
+        },
+    ]
+
+
     const handleSliderChangeHP = (event: Event, newValue: number) => {
+        if(newValue <= pain[0].value) setPainMod(1);
+        else if(newValue <= pain[1].value) setPainMod(2);
+        else if(newValue <= pain[2].value) setPainMod(3);
+        else if(newValue <= pain[3].value) setPainMod(4);
+        else setPainMod(0);
         setHP(newValue)
     };
 
@@ -63,25 +90,6 @@ const Stats = () =>
             setMaxHP(0);
         }
     };
-
-    const pain =[
-        {
-            value: maxHP * 0.75,
-            label: '+1 SM'
-        },
-        {
-            value: maxHP * 0.5,
-            label: '+1 SM'
-        },
-        {
-            value: maxHP * 0.25,
-            label: '+1 SM'
-        },
-        {
-            value: 5,
-            label: '+1 SM'
-        },
-    ]
 
     return (
         <Box>

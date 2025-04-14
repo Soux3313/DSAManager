@@ -4,6 +4,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
+import {GlobalStyles} from "@mui/system";
+
+const globalStyles = (
+    <GlobalStyles
+        styles={{
+            '@font-face': [
+                {
+                    fontFamily: 'Grith',
+                    src: `url(${process.env.PUBLIC_URL + '/fonts/grith/Grith-gw3z1.otf'}) format('opentype')`,
+                    fontWeight: 'normal',
+                    fontStyle: 'normal',
+                },
+            ],
+        }}
+    />
+);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -20,6 +36,7 @@ root.render(
   <React.StrictMode>
       <ThemeProvider theme={theme}>
           <CssBaseline />
+          {globalStyles}
           <App />
       </ThemeProvider>
   </React.StrictMode>

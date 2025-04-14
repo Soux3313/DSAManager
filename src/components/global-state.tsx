@@ -99,12 +99,10 @@ interface GlobalState {
     copper: number;
     setCopper: (value: number) => void;
 
-    pain: number;
-    addPain: () => void;
-    removePain: () => void;
-
     effects: EffectWithIcon[]; // Use the extended type that includes icons
     setEffects: React.Dispatch<React.SetStateAction<EffectWithIcon[]>>;
+    painMod: number;
+    setPainMod: (value: number) => void;
 }
 
 const GlobalStateContext = createContext<GlobalState | undefined>(undefined);
@@ -156,7 +154,9 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     const [silver, setSilver] = useState(getStoredValue('silver', 0));
     const [heller, setHeller] = useState(getStoredValue('heller', 0));
     const [copper, setCopper] = useState(getStoredValue('copper', 0));
-    const [pain, setPain] = useState(getStoredValue('pain', 0));
+
+    const [painMod, setPainMod] = useState(0);
+
 
     // Define the default effects array (with icon names instead of components)
     const effectsOpt: Effect[] = [
@@ -285,24 +285,6 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     const setHellerVal = setValue('heller', setHeller);
     const setCopperVal = setValue('copper', setCopper);
 
-    // Pain management functions
-    const setPainVal = setValue('pain', setPain);
-    const addPain = () => {
-        setPainVal(pain + 1);
-    };
-    const removePain = () => {
-        setPainVal(Math.max(0, pain - 1)); // Ensure pain doesn't go below 0
-    };
-
-    // Global modifier management
-    const setGlobalModVal = setValue('globalmod', setGlobalMod);
-    const addMod = () => {
-        setGlobalModVal(globalMod + 1);
-    };
-    const removeMod = () => {
-        setGlobalModVal(globalMod - 1);
-    };
-
     return (
         <GlobalStateContext.Provider value={{
             MU, setMU: setMUVal,
@@ -322,7 +304,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
             heller, setHeller: setHellerVal,
             copper, setCopper: setCopperVal,
             effects, setEffects,
-            pain, addPain, removePain
+            painMod, setPainMod
         }}>
             {children}
         </GlobalStateContext.Provider>
