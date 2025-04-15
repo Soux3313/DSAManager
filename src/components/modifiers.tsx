@@ -7,7 +7,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 const Modifiers = () => {
     const {
-        effects, painMod, setEffects
+        effects, painMod, setEffects, globalMod, setGlobalMod
     } = useGlobalState();
 
     const prevPainMod = useRef(painMod);
@@ -82,8 +82,12 @@ const Modifiers = () => {
             case 4: mod -= 3; break;
         }
 
+
         return mod+modMod;
+
     };
+
+    setGlobalMod(calculateGlobal())
 
     return (
         <Box sx={{
@@ -114,12 +118,12 @@ const Modifiers = () => {
                 }}>
                     <Box sx={{transform: 'scale(4)', lineHeight: 1}}>
                         <Typography sx={{
-                            color: (calculateGlobal() < 0) ? '#fd2424' : '#08bb21',
+                            color: (globalMod < 0) ? '#fd2424' : '#08bb21',
                             WebkitTextStroke: '0.5px black',
                             alignSelf: 'flex-end',
                         }}>
                             <NumberFlow
-                                value={calculateGlobal()}
+                                value={globalMod}
                                 transformTiming={{ duration: 500, easing: 'ease-out' }}
                                 trend={0}
                             />

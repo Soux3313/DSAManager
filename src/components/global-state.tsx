@@ -101,8 +101,12 @@ interface GlobalState {
 
     effects: EffectWithIcon[]; // Use the extended type that includes icons
     setEffects: React.Dispatch<React.SetStateAction<EffectWithIcon[]>>;
+
     painMod: number;
     setPainMod: (value: number) => void;
+
+    globalMod: number;
+    setGlobalMod: (value: number) => void;
 }
 
 const GlobalStateContext = createContext<GlobalState | undefined>(undefined);
@@ -156,6 +160,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     const [copper, setCopper] = useState(getStoredValue('copper', 0));
 
     const [painMod, setPainMod] = useState(0);
+
+    const [globalMod, setGlobalMod] = useState(getStoredValue('globalmod', 0));
 
 
     // Define the default effects array (with icon names instead of components)
@@ -223,8 +229,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         }
     });
 
-    //ToDo: save globalMod here
-    const [globalMod, setGlobalMod] = useState(getStoredValue('globalmod', 0));
+
 
     // Helper function for localStorage saving with error handling
     const saveToLocalStorage = (key: string, value: any) => {
@@ -285,6 +290,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     const setHellerVal = setValue('heller', setHeller);
     const setCopperVal = setValue('copper', setCopper);
 
+    const setGlobalModVal = setValue('globalmod', setGlobalMod);
+
     return (
         <GlobalStateContext.Provider value={{
             MU, setMU: setMUVal,
@@ -304,7 +311,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
             heller, setHeller: setHellerVal,
             copper, setCopper: setCopperVal,
             effects, setEffects,
-            painMod, setPainMod
+            painMod, setPainMod,
+            globalMod, setGlobalMod: setGlobalModVal
         }}>
             {children}
         </GlobalStateContext.Provider>

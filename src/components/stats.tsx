@@ -4,6 +4,7 @@ import {styled} from "@mui/material";
 import {useGlobalState} from "./global-state";
 import HealthIcon from '@mui/icons-material/FavoriteBorder';
 import MagicIcon from '@mui/icons-material/AutoAwesome';
+import PainIcon from '@mui/icons-material/Healing';
 
 const Stats = () =>
 {
@@ -48,19 +49,19 @@ const Stats = () =>
     const pain =[
         {
             value: maxHP * 0.75,
-            label: '+1 SM'
+            label: <PainIcon/>
         },
         {
             value: maxHP * 0.5,
-            label: '+1 SM'
+            label: <PainIcon/>
         },
         {
             value: maxHP * 0.25,
-            label: '+1 SM'
+            label: <PainIcon/>
         },
         {
             value: 5,
-            label: '+1 SM'
+            label: <PainIcon/>
         },
     ]
 
