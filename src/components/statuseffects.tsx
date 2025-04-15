@@ -1,7 +1,5 @@
 import {
-    Box,
-    Grid,
-    Paper, Slider,
+    Slider,
     Table,
     TableBody,
     TableCell,

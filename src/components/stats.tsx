@@ -1,5 +1,5 @@
-import {Box, Grid, Input, InputLabel, Slider, TextField} from "@mui/material";
-import React, {useState} from "react";
+import {Box, Grid, Input, Slider, TextField} from "@mui/material";
+import React from "react";
 import {styled} from "@mui/material";
 import {useGlobalState} from "./global-state";
 import HealthIcon from '@mui/icons-material/FavoriteBorder';
@@ -17,7 +17,7 @@ const Stats = () =>
         KO, setKO,
         KK, setKK,
         HP, setHP, maxHP, setMaxHP, AK, setAK, maxAK, setMaxAK,
-        painMod, setPainMod
+        setPainMod
     } = useGlobalState();
 
     const StatBox = styled(Box)({
@@ -33,10 +33,11 @@ const Stats = () =>
                 type="number"
                 size="small"
                 {...props}
+                //ToDo: Find Alternative
                 InputProps={{ inputProps: { min: 8, max: 20 } }}
                 sx={{
-                    width: '65px', // Fixed width to prevent expansion
-                    minWidth: '65px', // Ensures consistency when wrapping
+                    width: '65px',
+                    minWidth: '65px',
                     ...(props.sx || {})
                 }}
             />

@@ -1,4 +1,4 @@
-import {createContext, ReactNode, useContext, useState, useRef, useEffect, useCallback} from "react";
+import React, {createContext, ReactNode, useContext, useState, useRef, useCallback} from "react";
 import { SvgIconComponent } from '@mui/icons-material';
 import Anonymous from '@mui/icons-material/VisibilityOff';
 import Lust from '@mui/icons-material/VolunteerActivism';
@@ -21,7 +21,7 @@ enum Stage {
     four,
 }
 
-// Create a map of icon names to icon components
+//map of icon names to icon components
 const iconMap: Record<string, SvgIconComponent> = {
     'Anonymous': Anonymous,
     'Lust': Lust,
@@ -42,7 +42,7 @@ type Effect = {
     id: number;
     name: string;
     stage: Stage;
-    iconName: string; // Store the name of the icon, not the component itself
+    iconName: string;
 };
 
 // Extended Effect type for internal use that includes the icon component
@@ -188,7 +188,6 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
             const stored = getStoredValue('effects', null);
 
             if (stored !== null) {
-                // This is where we handle existing stored effects that might not have iconName
                 const validatedEffects = stored.map((effect: any, index: number) => {
                     // If the effect has an iconName property, use it
                     if (effect.iconName && iconMap[effect.iconName]) {
@@ -224,6 +223,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         }
     });
 
+    //ToDo: save globalMod here
     const [globalMod, setGlobalMod] = useState(getStoredValue('globalmod', 0));
 
     // Helper function for localStorage saving with error handling
