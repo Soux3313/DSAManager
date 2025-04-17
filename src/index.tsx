@@ -27,7 +27,7 @@ const root = ReactDOM.createRoot(
 const theme = createTheme({
     palette: {
         text: {
-            primary: 'white',  // Default text color
+            primary: '#ffffff',  // Default text color
             secondary: 'lightgray', // Optional for secondary text
         },
     },
