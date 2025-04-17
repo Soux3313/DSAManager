@@ -262,7 +262,6 @@ const Stats = () =>
                         onChange={handleInputChangeHP}
                         onBlur={handleBlur}
                         inputProps={{
-                            step: 10,
                             min: 0,
                             max: 100,
                             type: 'number',
@@ -303,7 +302,6 @@ const Stats = () =>
                         onChange={handleInputChangeAK}
                         onBlur={handleBlur}
                         inputProps={{
-                            step: 10,
                             min: 0,
                             max: 100,
                             type: 'number',
