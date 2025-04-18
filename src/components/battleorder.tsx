@@ -1,11 +1,35 @@
-import {Box} from "@mui/material";
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow, TextField,
+    Typography
+} from "@mui/material";
+import React from "react";
+import AddIcon from '@mui/icons-material/Add';
 
 const BattleOrder = () =>
 {
     return (
-        <Box>
-           BATTLE ORDER
-        </Box>
+        <TableContainer>
+            <Table size="small" sx={{width: 'fit-content'}}>
+                <TableHead>
+                    <TableRow>
+                        <TableCell align="center" sx={{width: '60%', borderRight: '1px solid white'}}>
+                            <TextField label="Kämpfer" variant="outlined"/>
+                        </TableCell>
+                        <TableCell align="center" sx={{ width: '15%', borderRight: '1px solid white'}}>
+                            <TextField label="INI" variant="outlined"/>
+                        </TableCell>
+                        <TableCell>
+                            <AddIcon/>
+                        </TableCell>
+                    </TableRow>
+                </TableHead>
+            </Table>
+        </TableContainer>
     );
 }
 
