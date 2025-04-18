@@ -1,10 +1,12 @@
-import {Box, Grid, Input, Slider, TextField} from "@mui/material";
+import {Box, Grid, IconButton, Input, Slider, TextField} from "@mui/material";
 import React from "react";
 import {styled} from "@mui/material";
 import {useGlobalState} from "./global-state";
 import HealthIcon from '@mui/icons-material/FavoriteBorder';
 import MagicIcon from '@mui/icons-material/AutoAwesome';
 import PainIcon from '@mui/icons-material/Healing';
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const Stats = () =>
 {
@@ -65,8 +67,9 @@ const Stats = () =>
         },
     ]
 
-
-    const handleSliderChangeHP = (event: Event, newValue: number) => {
+    // Calculates current levels of Pain Status-Effect based on current hp
+    const calcPain = (newValue: number) =>
+    {
         if (newValue <= pain[3].value) {
             setPainMod(4);
         } else if (newValue <= pain[2].value) {
@@ -78,12 +81,26 @@ const Stats = () =>
         } else {
             setPainMod(0);
         }
+    }
+
+    const handleSliderChangeHP = (event: Event, newValue: number) => {
         setHP(newValue);
+        calcPain(newValue)
     };
 
     const handleInputChangeHP = (event: React.ChangeEvent<HTMLInputElement>) => {
         setMaxHP(event.target.value === '' ? 0 : Number(event.target.value));
     };
+
+    const addHP = () => {
+        calcPain(HP+1)
+        setHP(HP+1)
+    }
+
+    const removeHP = () => {
+        calcPain(HP-1)
+        setHP(HP-1)
+    }
 
     const handleSliderChangeAK = (event: Event, newValue: number) => {
         setAK(newValue);
@@ -92,6 +109,14 @@ const Stats = () =>
     const handleInputChangeAK = (event: React.ChangeEvent<HTMLInputElement>) => {
         setMaxAK(event.target.value === '' ? 0 : Number(event.target.value));
     };
+
+    const addAK = () => {
+        setAK(AK+1)
+    }
+
+    const removeAK = () => {
+        setAK(AK-1)
+    }
 
     const handleBlur = () => {
         if (maxHP < 0) {
@@ -240,7 +265,12 @@ const Stats = () =>
                 <Grid size={{xs:1 , md: 1}}>
                     <HealthIcon/>
                 </Grid>
-                <Grid  size={{xs:7, md: 8}}>
+                <Grid size={{md: 1}} sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+                    <IconButton onClick={removeHP}>
+                        <RemoveIcon sx={{ color: 'white' }} />
+                    </IconButton>
+                </Grid>
+                <Grid  size={{xs:7, md: 6}}>
                     <Slider
                         defaultValue={maxHP}
                         value={HP}
@@ -254,6 +284,11 @@ const Stats = () =>
                             color:"#ec1e55"
                         }}
                     />
+                </Grid>
+                <Grid size={{md: 1}} sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <IconButton onClick={addHP}>
+                        <AddIcon sx={{ color: 'white' }} />
+                    </IconButton>
                 </Grid>
                 <Grid  size={{xs:4, md: 2}}>
                     <Input
@@ -281,7 +316,12 @@ const Stats = () =>
                 <Grid size={{xs:1 , md: 1}}>
                     <MagicIcon/>
                 </Grid>
-                <Grid  size={{xs:7, md: 8}}>
+                <Grid size={{md: 1}} sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+                    <IconButton onClick={removeAK}>
+                        <RemoveIcon sx={{ color: 'white' }} />
+                    </IconButton>
+                </Grid>
+                <Grid  size={{xs:7, md: 6}}>
                     <Slider
                         defaultValue={maxAK}
                         value={AK}
@@ -294,6 +334,11 @@ const Stats = () =>
                             color:"#0db985"
                         }}
                     />
+                </Grid>
+                <Grid size={{md: 1}} sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <IconButton onClick={addAK}>
+                        <AddIcon sx={{ color: 'white' }} />
+                    </IconButton>
                 </Grid>
                 <Grid  size={{xs:4, md: 2}}>
                     <Input

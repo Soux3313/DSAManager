@@ -20,9 +20,6 @@ const BattleOrder = () =>
                         <TableCell align="center" sx={{width: '60%', borderRight: '1px solid white'}}>
                             <TextField label="Kämpfer" variant="outlined"/>
                         </TableCell>
-                        <TableCell align="center" sx={{ width: '15%', borderRight: '1px solid white'}}>
-                            <TextField label="INI" variant="outlined"/>
-                        </TableCell>
                         <TableCell>
                             <AddIcon/>
                         </TableCell>
