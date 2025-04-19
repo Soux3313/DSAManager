@@ -63,15 +63,14 @@ const BattleOrder = () =>
     };
 
 
-
     return (
         <TableContainer>
             <Table size="small" sx={{width: '100%'}}>
                 <TableHead>
                     <TableRow>
-                        <TableCell/>
-                        <TableCell/>
-                        <TableCell align="center" sx={{width: '90%',}}>
+                        <TableCell sx={{borderColor: '#ecb54a'}}/>
+                        <TableCell sx={{borderColor: '#ecb54a'}}/>
+                        <TableCell align="center" sx={{width: '90%', borderColor: '#ecb54a'}}>
                             <TextField label="Kämpfer" value={fighter}
                                        onChange={(e) => setFighter(e.target.value)}
                                        variant="outlined"
@@ -82,8 +81,8 @@ const BattleOrder = () =>
                                        }}
                             />
                         </TableCell>
-                        <TableCell sx={{ borderRight: '1px solid white'}}/>
-                        <TableCell>
+                        <TableCell sx={{ borderRight: '1px solid white', borderColor: '#ecb54a'}}/>
+                        <TableCell  sx={{borderColor: '#ecb54a'}}>
                             <IconButton onClick={addFighter}>
                                 <AddIcon sx={{color:'white'}}/>
                             </IconButton>
@@ -94,27 +93,25 @@ const BattleOrder = () =>
                     {fighters.map((f, index) => {
                             return(
                                 <TableRow>
-                                    <TableCell>
+                                    <TableCell sx={{borderColor: '#ecb54a'}}>
                                         <Typography>
                                             {index+1}.
                                         </Typography>
                                     </TableCell>
-                                    <TableCell sx={{width: '10%'}}>
+                                    <TableCell sx={{width: '10%', borderColor: '#ecb54a'}}>
                                         <IconButton onClick={()=>moveUp(f)} sx={{color:'white'}}>
                                             <KeyboardArrowUpIcon/>
                                         </IconButton>
                                     </TableCell>
-                                    <TableCell align="center" sx={{width: '60%'}}>
-                                       <Typography>
-                                           {f}
-                                       </Typography>
+                                    <TableCell align="center" sx={{width: '60%', borderColor: '#ecb54a'}}>
+                                       <TextField value={f}/>
                                     </TableCell>
-                                    <TableCell sx={{width: '10%',  borderRight: '1px solid white'}}>
+                                    <TableCell sx={{width: '10%',  borderRight: '1px solid', borderColor: '#ecb54a'}}>
                                         <IconButton onClick={()=>moveDown(f)} sx={{color:'white'}}>
                                             <KeyboardArrowDownIcon/>
                                         </IconButton>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell sx={{borderColor: '#ecb54a'}}>
                                         <IconButton onClick={()=>removeFighter(index)}>
                                             <DeleteForeverIcon sx={{color:'white'}}/>
                                         </IconButton>

@@ -86,17 +86,17 @@ const StatusEffects = () => {
             <Table size="small" sx={{width: 'fit-content', maxWidth: 500}}>
                 <TableHead>
                     <TableRow>
-                        <TableCell align="center" sx={{width: '1%', borderRight: '1px solid white'}}>
+                        <TableCell align="center" sx={{width: '1%', borderRight: '1px solid', borderColor: '#ecb54a'}}>
                             <Typography variant="h6">
                                 Zustände
                             </Typography>
                         </TableCell>
-                        <TableCell align="center" sx={{paddingLeft: 10, width: '99%',}}>
+                        <TableCell align="center" sx={{paddingLeft: 10, width: '99%', borderColor: '#ecb54a'}}>
                             <Typography variant="h6">
                                 Stufe
                             </Typography>
                         </TableCell>
-                        <TableCell>
+                        <TableCell sx={{borderColor: '#ecb54a'}}>
                         </TableCell>
                     </TableRow>
                 </TableHead>
@@ -108,14 +108,14 @@ const StatusEffects = () => {
                         return (
                             <TableRow key={effect.id}>
                                 {/* Name */}
-                                <TableCell align="center" sx={{borderRight: '1px solid white'}}>
+                                <TableCell align="center" sx={{borderRight: '1px solid', borderColor: '#ecb54a'}}>
                                     <Typography variant="body2">
                                         {effect.name}
                                     </Typography>
                                 </TableCell>
 
                                 {/* Stage */}
-                                <TableCell align="center" sx={{paddingRight:0}}>
+                                <TableCell align="center" sx={{paddingRight:0, borderColor: '#ecb54a'}}>
                                     <Slider
                                         size="small"
                                         defaultValue={0}
@@ -133,7 +133,7 @@ const StatusEffects = () => {
                                     />
                                 </TableCell>
 
-                                <TableCell>
+                                <TableCell sx={{borderColor: '#ecb54a'}}>
                                     {IconComponent && <IconComponent />}
                                 </TableCell>
                             </TableRow>

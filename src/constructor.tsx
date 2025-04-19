@@ -16,7 +16,7 @@ const Constructor = () =>
     return (
         <GlobalStateProvider>
             <Box sx={{
-                backgroundColor: '#2d302e',
+                backgroundColor: '#1e1c19',
                 overflow: 'hidden'
             }}>
                 <Box sx={{
