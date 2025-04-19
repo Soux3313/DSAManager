@@ -16,7 +16,8 @@ const Constructor = () =>
     return (
         <GlobalStateProvider>
             <Box sx={{
-                backgroundColor: '#2d302e'
+                backgroundColor: '#2d302e',
+                overflow: 'hidden'
             }}>
                 <Box sx={{
                     display: 'flex',
@@ -34,7 +35,7 @@ const Constructor = () =>
                             border: 'solid 2px black',
                             flexGrow: 1.5
                         }}>
-                            <DiceTray />
+                            <Notes />
                         </Box>
 
                         <Box sx={{
@@ -77,23 +78,23 @@ const Constructor = () =>
                     }}>
                         <Box sx={{
                             border: 'solid 2px black',
-                            flexGrow: 1.5,
                             overflow: 'hidden',
+                            flexGrow: 0.5
                         }}>
-                            <Notes />
+                            <BattleOrder />
                         </Box>
 
                         <Box sx={{
                             display: 'flex',
                             border: 'solid 2px black',
                             flexDirection: 'column',
-                            flexGrow: 0.5
+                            flexGrow: 1
                         }}>
                             <Box sx={{
                                 border: 'solid 2px black',
                                 flexGrow: 1
                             }}>
-                                <BattleOrder />
+                                <DiceTray />
                             </Box>
 
                             <Box sx={{
