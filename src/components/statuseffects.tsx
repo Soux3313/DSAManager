@@ -82,8 +82,10 @@ const StatusEffects = () => {
     };
 
     return (
-        <TableContainer sx={{ width: 450, overflowX: 'hidden',  overflowY: 'auto',  maxHeight: 'calc(100vh - 300px)'}}>
-            <Table size="small" sx={{width: 'fit-content', maxWidth: 500}}>
+        <TableContainer sx={{ width: '100%', maxHeight: '100%', overflowX: 'hidden',  overflowY: 'auto'}}>
+            <Table size="small" sx={{ width: '100%',
+                tableLayout: 'auto'
+            }}>
                 <TableHead>
                     <TableRow>
                         <TableCell align="center" sx={{width: '1%', borderRight: '1px solid', borderColor: '#ecb54a'}}>
@@ -127,7 +129,7 @@ const StatusEffects = () => {
                                         onChange={handleSliderChange(effect.id)}
                                         sx={{
                                             minWidth: 0,
-                                            width: '60%',
+                                            width: '100%',
                                             marginLeft: '5%'
                                         }}
                                     />

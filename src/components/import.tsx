@@ -30,9 +30,16 @@ interface Purse {
     h: string; // Heller
     k: string; // Kreuzer
 }
+interface Item {
+    name: string;
+    amount: number;
+    price: number;
+    weight: number;
+}
 
 interface Belongings {
     purse: Purse;
+    items: Item[];
 }
 
 interface HeroData {
@@ -41,7 +48,7 @@ interface HeroData {
     r: string;
 }
 
-const CharacterIMG = () => {
+const Import = () => {
     const{
         setMU,
         setKL,
@@ -52,7 +59,8 @@ const CharacterIMG = () => {
         setKO,
         setKK,
         setMaxHP, setMaxAK,
-        setDukaten, setSilver, setHeller, setCopper
+        setDukaten, setSilver, setHeller, setCopper,
+        setItems
     }= useGlobalState()
 
     const handleFileChange = (event: Event) => {
@@ -139,6 +147,31 @@ const CharacterIMG = () => {
         let kp = json.attr.kp;
         setMaxAK(20+tempIN+ae+kp)
 
+        // items
+        let items: Item[] = [];
+
+        for(let key in json.belongings.items)
+        {
+            if (json.belongings.items.hasOwnProperty(key)) {
+                const item = json.belongings.items[key];
+                const name = item.name;
+                const amount = item.amount;
+                const price = item.price;
+                const weight = item.weight;
+
+                const newItem: Item = {
+                    name: name,
+                    amount: amount,
+                    price: price,
+                    weight: weight
+                }
+
+                items.push(newItem);
+            }
+
+        }
+
+        setItems(items)
 
         setMU(tempMU);
         setKL(tempKL);
@@ -169,7 +202,6 @@ const CharacterIMG = () => {
                     color: '#ffffff',
                     backgroundColor: '#1976d2',
                     margin: 'auto',
-                    marginTop: '20%'
                 }}
             >
                 Import Hero
@@ -178,4 +210,4 @@ const CharacterIMG = () => {
     );
 };
 
-export default CharacterIMG;
+export default Import;

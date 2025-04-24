@@ -91,10 +91,8 @@ const Modifiers = () => {
 
     return (
         <Box sx={{
-            marginTop: '20%',
             display: 'flex',
             flexDirection: 'column',
-
         }}>
             {incap ? (
                 <NoMove sx={{
@@ -107,16 +105,17 @@ const Modifiers = () => {
 
                 <Box  sx={{
                     display: 'flex',
-                    flexDirection: 'column',
+                    flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'center',
                     padding: 0,
-                    margin: 0,
+                    marginLeft: 5,
                     width: 'fit-content',
                     height: 'fit-content',
-                    gap: 0.5,
+                    gap: 1
                 }}>
-                    <Box sx={{transform: 'scale(4)', lineHeight: 1}}>
+
+                    <Box sx={{transform: 'scale(3)', lineHeight: 1}}>
                         <Typography sx={{
                             color: (globalMod < 0) ? '#fd2424' : '#08bb21',
                             WebkitTextStroke: '0.5px black',
@@ -129,26 +128,10 @@ const Modifiers = () => {
                             />
                         </Typography>
                     </Box>
-
-                    <Box sx={{justifySelf: 'space-between', marginTop: '30%'}}>
-                        <IconButton onClick={remModMod}>
-                            <RemoveIcon sx={{
-                                color:'gray',
-                                stroke: 'black',
-                                strokeWidth: '0.8px',
-
-                                '&:hover': {
-                                    backgroundColor: 'transparent',
-                                    transform: 'scale(1.2)',
-                                },
-
-                                transition: 'transform 0.1s',
-                                '&:active': {
-                                    transform: 'scale(1.1)',
-                                },
-
-                            }}/>
-                        </IconButton>
+                    <Box sx={{
+                        display: 'flex',
+                        flexDirection: 'column'
+                    }}>
                         <IconButton onClick={addModMod}>
                             <AddIcon sx={{
                                 color:'gray',
@@ -164,7 +147,24 @@ const Modifiers = () => {
                                 '&:active': {
                                     transform: 'scale(1.1)',
                                 },
-                                }}/>
+                            }}/>
+                        </IconButton>
+                        <IconButton onClick={remModMod}>
+                            <RemoveIcon sx={{
+                                color:'gray',
+                                stroke: 'black',
+                                strokeWidth: '0.8px',
+                                '&:hover': {
+                                    backgroundColor: 'transparent',
+                                    transform: 'scale(1.2)',
+                                },
+
+                                transition: 'transform 0.1s',
+                                '&:active': {
+                                    transform: 'scale(1.1)',
+                                },
+
+                            }}/>
                         </IconButton>
                     </Box>
                     <Typography sx={{fontStyle: 'italic', color: '#626883'}}>

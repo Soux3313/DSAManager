@@ -104,7 +104,14 @@ const BattleOrder = () =>
                                         </IconButton>
                                     </TableCell>
                                     <TableCell align="center" sx={{width: '60%', borderColor: '#ecb54a'}}>
-                                       <TextField value={f}/>
+                                        <TextField
+                                            value={f}
+                                            onChange={(e) => {
+                                                const updatedFighters = [...fighters];
+                                                updatedFighters[index] = e.target.value;
+                                                setFighters(updatedFighters);
+                                            }}
+                                        />
                                     </TableCell>
                                     <TableCell sx={{width: '10%',  borderRight: '1px solid', borderColor: '#ecb54a'}}>
                                         <IconButton onClick={()=>moveDown(f)} sx={{color:'white'}}>

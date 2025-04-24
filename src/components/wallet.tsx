@@ -76,7 +76,7 @@ const Wallet = () =>
     };
     return (
         <Box>
-            <Grid container columnSpacing={2} sx={{ alignItems: 'center', marginLeft: '40px', marginTop: '50px', width: 'calc(100% - 40px)' }}>
+            <Grid container columnSpacing={2} sx={{ alignItems: 'center', marginLeft: '40px', marginTop: '30px', width: 'calc(100% - 40px)' }}>
                 <Grid size={{md: 1}} sx={{ display: 'flex', justifyContent: 'flex-start' }}>
                     <IconButton onClick={removeDuk}>
                         <RemoveIcon sx={{ color: 'white' }} />
@@ -118,7 +118,7 @@ const Wallet = () =>
                 </Grid>
             </Grid>
 
-            <Grid container columnSpacing={2} sx={{ alignItems: 'center', marginLeft: '40px', marginTop: '50px', width: 'calc(100% - 40px)' }}>
+            <Grid container columnSpacing={2} sx={{ alignItems: 'center', marginLeft: '40px', marginTop: '30px', width: 'calc(100% - 40px)' }}>
                 <Grid size={{md: 1}} sx={{ display: 'flex', justifyContent: 'flex-start' }}>
                     <IconButton onClick={removeSil}>
                         <RemoveIcon sx={{ color: 'white' }} />
@@ -159,7 +159,7 @@ const Wallet = () =>
                 </Grid>
             </Grid>
 
-            <Grid container columnSpacing={2} sx={{ alignItems: 'center', marginLeft: '40px', marginTop: '50px', width: 'calc(100% - 40px)' }}>
+            <Grid container columnSpacing={2} sx={{ alignItems: 'center', marginLeft: '40px', marginTop: '30px', width: 'calc(100% - 40px)' }}>
                 <Grid size={{md: 1}} sx={{ display: 'flex', justifyContent: 'flex-start' }}>
                     <IconButton onClick={removeHel}>
                         <RemoveIcon sx={{ color: 'white' }} />
@@ -200,7 +200,7 @@ const Wallet = () =>
                 </Grid>
             </Grid>
 
-            <Grid container columnSpacing={2} sx={{ alignItems: 'center', marginLeft: '40px', marginTop: '50px', width: 'calc(100% - 40px)' }}>
+            <Grid container columnSpacing={2} sx={{ alignItems: 'center', marginLeft: '40px', marginTop: '30px', width: 'calc(100% - 40px)' }}>
                 <Grid size={{md: 1}} sx={{ display: 'flex', justifyContent: 'flex-start' }}>
                     <IconButton onClick={removeCop}>
                         <RemoveIcon sx={{ color: 'white' }} />

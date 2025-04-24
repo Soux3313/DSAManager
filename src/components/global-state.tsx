@@ -50,6 +50,13 @@ type EffectWithIcon = Effect & {
     icon: SvgIconComponent;
 };
 
+type Item = {
+    name: string;
+    amount: number;
+    price: number;
+    weight: number;
+}
+
 interface GlobalState {
     MU: number;
     setMU: (value: number) => void;
@@ -107,6 +114,8 @@ interface GlobalState {
 
     globalMod: number;
     setGlobalMod: (value: number) => void;
+    items: Item[];
+    setItems: (value: Item[]) => void;
 }
 
 const GlobalStateContext = createContext<GlobalState | undefined>(undefined);
@@ -162,6 +171,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     const [painMod, setPainMod] = useState(0);
 
     const [globalMod, setGlobalMod] = useState(getStoredValue('globalmod', 0));
+
+    const [items, setItemsState] = useState<Item[]>(getStoredValue('items', []))
 
 
     // Define the default effects array (with icon names instead of components)
@@ -251,6 +262,12 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         saveToLocalStorage('effects', storageEffects);
     }, 300); // 300ms debounce
 
+    // Create a debounced version of the save function for effects
+    const debouncedSaveItems = useDebounce((value: Item[]) => {
+        saveToLocalStorage('items', value);
+    }, 300); // 300ms debounce
+
+
     // Wrapper for setEffectsState that manages the icon components
     const setEffects = useCallback((action: React.SetStateAction<EffectWithIcon[]>) => {
         setEffectsState(prevEffects => {
@@ -265,6 +282,11 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
             return newEffects;
         });
     }, [debouncedSaveEffects]);
+
+    const setItems = useCallback((newItems: Item[]) => {
+        setItemsState(newItems);
+        debouncedSaveItems(newItems)
+        }, [debouncedSaveItems]);
 
     // Standard setter that also saves to localStorage immediately
     const setValue = (key: string, setter: React.Dispatch<React.SetStateAction<number>>) => (value: number) => {
@@ -292,6 +314,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
 
     const setGlobalModVal = setValue('globalmod', setGlobalMod);
 
+
     return (
         <GlobalStateContext.Provider value={{
             MU, setMU: setMUVal,
@@ -312,7 +335,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
             copper, setCopper: setCopperVal,
             effects, setEffects,
             painMod, setPainMod,
-            globalMod, setGlobalMod: setGlobalModVal
+            globalMod, setGlobalMod: setGlobalModVal,
+            items, setItems
         }}>
             {children}
         </GlobalStateContext.Provider>
