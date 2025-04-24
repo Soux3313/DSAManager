@@ -1,0 +1,24 @@
+/* Dark background for CodeMirror editor */
+.CodeMirror {
+    background-color: #363535 !important;
+    color: #ffffff !important;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+}
+
+/* Gutter (line numbers) background */
+.CodeMirror-gutters {
+    background-color: #ff0000 !important;
+    border-right: 1px solid #ff0000 !important;
+    color: #ff0000 !important;
+}
+
+/* Cursor (caret) color */
+.CodeMirror-cursor {
+    border-left: 2px solid #c0a257 !important;
+}
+
+
+/* Optional: tweak heading/link colors */
+.editor-preview h1, .editor-preview-side h1 {
+    color: #ffcb6b;
+}
