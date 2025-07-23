@@ -55,6 +55,7 @@ type Item = {
     amount: number;
     price: number;
     weight: number;
+    note: string;
 }
 
 interface GlobalState {

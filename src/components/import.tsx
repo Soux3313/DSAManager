@@ -35,6 +35,7 @@ interface Item {
     amount: number;
     price: number;
     weight: number;
+    note: string;
 }
 
 interface Belongings {
@@ -158,12 +159,14 @@ const Import = () => {
                 const amount = item.amount;
                 const price = item.price;
                 const weight = item.weight;
+                const note = "";
 
                 const newItem: Item = {
                     name: name,
                     amount: amount,
                     price: price,
-                    weight: weight
+                    weight: weight,
+                    note: note,
                 }
 
                 items.push(newItem);

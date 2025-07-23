@@ -6,12 +6,14 @@ import {
     TableCell,
     TableContainer,
     TableHead,
-    TableRow, TextField,
+    TableRow, TextField, Tooltip,
     Typography
 } from "@mui/material";
 import React, {useState} from "react";
 import {useGlobalState} from "./global-state";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import InfoOutlineIcon from '@mui/icons-material/InfoOutline';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 
 interface ItemDialogProps {
@@ -24,6 +26,7 @@ type Item = {
     amount: number;
     price: number;
     weight: number;
+    note: string;
 }
 function SimpleDialog(props: ItemDialogProps) {
     const {
@@ -46,6 +49,7 @@ function SimpleDialog(props: ItemDialogProps) {
             amount: count,
             price: value,
             weight: weight,
+            note: note,
         };
 
         setItems([...items, newItem])
@@ -188,6 +192,17 @@ const Inventory = () =>
         }
     };
 
+    const addItem = (indexToAdd: number) => {
+        const updatedItems = [...items];
+
+        updatedItems[indexToAdd] = {
+            ...updatedItems[indexToAdd],
+            amount: updatedItems[indexToAdd].amount + 1
+        };
+        setItems(updatedItems);
+
+    };
+
     return (
         <TableContainer>
             <Table size="small" sx={{width: '100%'}}>
@@ -205,9 +220,17 @@ const Inventory = () =>
                             return(
                                 <TableRow>
                                     <TableCell sx={{width: '60%', borderRight: '1px solid', borderColor: '#ecb54a'}}>
-                                        <Typography>
-                                            {i.name}
-                                        </Typography>
+                                        <Box sx={{display:'flex', justifyContent: 'space-between'}}>
+                                            <Typography>
+                                                {i.name}
+                                            </Typography>
+
+                                            {i.note?.trim() && (
+                                                <Tooltip title={i.note}>
+                                                    <InfoOutlineIcon sx={{"&:hover":{color: "gray"}}}/>
+                                                </Tooltip>
+                                            )}
+                                        </Box>
                                     </TableCell>
                                     <TableCell sx={{width: '10%', borderRight: '1px solid', borderColor: '#ecb54a'}}>
                                         <Typography>
@@ -225,9 +248,14 @@ const Inventory = () =>
                                         </Typography>
                                     </TableCell>
                                     <TableCell sx={{ borderColor: '#ecb54a'}}>
-                                        <IconButton onClick={() => removeItem(index)}>
-                                            <HighlightOffIcon sx={{color:'red'}}/>
-                                        </IconButton>
+                                        <Box sx={{display: 'flex', flexGrow: 0.4}}>
+                                            <IconButton onClick={() => removeItem(index)}>
+                                                <HighlightOffIcon sx={{color:'red', scale: 0.8}}/>
+                                            </IconButton>
+                                            <IconButton onClick={() => addItem(index)}>
+                                                <AddCircleOutlineIcon sx={{color:'green', scale: 0.8}}/>
+                                            </IconButton>
+                                        </Box>
                                     </TableCell>
                                 </TableRow>
                             )
